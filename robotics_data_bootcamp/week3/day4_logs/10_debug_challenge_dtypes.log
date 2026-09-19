@@ -1,0 +1,81 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/19 08:58:43 WARN Utils: Your hostname, Sunnys-Mac-Studio.local, resolves to a loopback address: 127.0.0.1; using 10.0.0.19 instead (on interface en1)
+26/09/19 08:58:43 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/19 08:58:43 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+
+--- Spark printSchema() :: episodes (Spark/Mini-Project output, partitioned by robot) ---
+root
+ |-- episode_index: long (nullable = true)
+ |-- num_frames: long (nullable = true)
+ |-- task_index: long (nullable = true)
+ |-- duration_s: double (nullable = true)
+ |-- robot: string (nullable = true)
+
+
+--- Ray schema() :: episodes (Spark/Mini-Project output, partitioned by robot) ---
+Column         Type
+------         ----
+episode_index  int64
+num_frames     int64
+task_index     int64
+duration_s     double
+robot          string
+
+--- pandas dtypes :: episodes (Spark/Mini-Project output, partitioned by robot) ---
+episode_index       int64
+num_frames          int64
+task_index          int64
+duration_s        float64
+robot            category
+dtype: object
+
+--- Spark printSchema() :: ray_output_day1 (Ray Data output) ---
+root
+ |-- observation.state: array (nullable = true)
+ |    |-- element: float (containsNull = true)
+ |-- observation.effort: array (nullable = true)
+ |    |-- element: float (containsNull = true)
+ |-- action: array (nullable = true)
+ |    |-- element: float (containsNull = true)
+ |-- episode_index: long (nullable = true)
+ |-- frame_index: long (nullable = true)
+ |-- timestamp: float (nullable = true)
+ |-- next.done: boolean (nullable = true)
+ |-- index: long (nullable = true)
+ |-- task_index: long (nullable = true)
+ |-- action_magnitude: float (nullable = true)
+ |-- action_magnitude_outlier: boolean (nullable = true)
+
+
+--- Ray schema() :: ray_output_day1 (Ray Data output) ---
+Column                    Type
+------                    ----
+observation.state         ArrowTensorTypeV2(shape=(14,), dtype=float)
+observation.effort        ArrowTensorTypeV2(shape=(14,), dtype=float)
+action                    ArrowTensorTypeV2(shape=(14,), dtype=float)
+episode_index             int64
+frame_index               int64
+timestamp                 float
+next.done                 bool
+index                     int64
+task_index                int64
+action_magnitude          float
+action_magnitude_outlier  bool
+
+--- pandas dtypes :: ray_output_day1 (Ray Data output) ---
+observation.state           TensorDtype(shape=(14,), dtype=float32)
+observation.effort          TensorDtype(shape=(14,), dtype=float32)
+action                      TensorDtype(shape=(14,), dtype=float32)
+episode_index                                                 int64
+frame_index                                                   int64
+timestamp                                                   float32
+next.done                                                      bool
+index                                                         int64
+task_index                                                    int64
+action_magnitude                                            float32
+action_magnitude_outlier                                       bool
+dtype: object

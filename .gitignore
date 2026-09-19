@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+ray_output/
+ray_output_day1/
+spark_output/
+day4_logs/
+*.mcap

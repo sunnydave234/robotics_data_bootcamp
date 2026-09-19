@@ -1,0 +1,5 @@
+_SUCCESS
+robot=aloha
+
+spark_output/episodes//robot=aloha:
+part-00000-feb4dc14-daf6-4c9b-9f4e-9c317c7c7036.c000.snappy.parquet

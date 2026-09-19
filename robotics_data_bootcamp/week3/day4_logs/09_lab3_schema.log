@@ -1,0 +1,8 @@
+inspecting file: spark_output/episodes/robot=aloha/part-00000-feb4dc14-daf6-4c9b-9f4e-9c317c7c7036.c000.snappy.parquet
+episode_index: int64
+num_frames: int64 not null
+task_index: int64
+duration_s: double
+-- schema metadata --
+org.apache.spark.version: '4.2.0'
+org.apache.spark.sql.parquet.row.metadata: '{"type":"struct","fields":[{"' + 269

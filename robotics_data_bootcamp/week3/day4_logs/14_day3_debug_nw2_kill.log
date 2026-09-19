@@ -1,0 +1,421 @@
+[36m(TrainController pid=13702)[0m Requesting resources: {'CPU': 1} * 2
+[36m(TrainController pid=13702)[0m Attempting to start training worker group of size 2 with the following resources: [{'CPU': 1}] * 2
+[36m(TrainController pid=13702)[0m [2026-09-19 10:11:55,055 E 13702 1980954] core_worker.cc:2330: Actor with class name: 'PreemptionWatcher' and ID: 'd0ac908b9d73f30b37a85b6f01000000' has constructor arguments in the object store and max_restarts > 0. If the arguments in the object store go out of scope or are lost, the actor restart will fail. See https://github.com/ray-project/ray/issues/53727 for more details.
+[36m(TrainController pid=13702)[0m Started training worker group of size 2: 
+[36m(TrainController pid=13702)[0m - (ip=127.0.0.1, pid=13716) world_rank=0, local_rank=0, node_rank=0
+[36m(TrainController pid=13702)[0m - (ip=127.0.0.1, pid=13717) world_rank=1, local_rank=1, node_rank=0
+[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[36m(RayTrainWorker pid=13716)[0m Setting up process group for: env:// [rank=0, world_size=2]
+[36m(RayTrainWorker pid=13716)[0m Moving model to device: cpu
+[36m(RayTrainWorker pid=13716)[0m Wrapping provided model in DistributedDataParallel.
+[36m(DatasetManager pid=13734)[0m /Users/sunnydave/envs/robotics-policy-lab/lib/python3.12/site-packages/ray/data/_internal/execution/interfaces/execution_options.py:428: RayDeprecationWarning: `ExecutionOptions.exclude_resources` is deprecated and will be removed after January 2027. Use `ExecutionOptions.label_selector` to constrain Ray Data work to labeled nodes.
+[36m(DatasetManager pid=13734)[0m   self.exclude_resources = exclude_resources
+[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[36m(SplitCoordinator pid=13742)[0m Starting execution of Dataset train_034RdPj1HzGUGrH1nJfifA_0. Full logs are in /tmp/ray/session_2026-09-19_10-11-46_396432_13623/logs/ray-data
+[36m(SplitCoordinator pid=13742)[0m Execution plan of Dataset train_034RdPj1HzGUGrH1nJfifA_0: InputDataBuffer[Input] -> TaskPoolMapOperator[ListFiles] -> TaskPoolMapOperator[ReadFilesParquetV2] -> OutputSplitter[split(2, equal=True)]
+[36m(SplitCoordinator pid=13742)[0m [dataset]: A new progress UI is available. To enable, set `ray.data.DataContext.get_current().enable_rich_progress_bars = True` and `ray.data.DataContext.get_current().use_ray_tqdm = False`.
+[2m[36m(pid=13742) [0mRunning Dataset train_034RdPj1HzGUGrH1nJfifA_0.: 0.00 row [00:00, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A                                                                                      
+                                                                      [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[2m[36m(pid=13742) [0mRunning Dataset train_034RdPj1HzGUGrH1nJfifA_0.: 0.00 row [00:00, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A                                                                                      
+                                                                      [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[2m[36m(pid=13742) [0mRunning Dataset train_034RdPj1HzGUGrH1nJfifA_0.: 0.00 row [00:01, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A[A[2m[36m(pid=13742) [0mRunning Dataset: train_034RdPj1HzGUGrH1nJfifA_0. Active & requested resources: 1/14 CPU, 0.0B/1.0GiB object store: : 0.00 row [00:01, ? row/s][2m[36m(pid=13742) [0mRunning Dataset: train_034RdPj1HzGUGrH1nJfifA_0. Active & requested resources: 1/14 CPU, 0.0B/1.0GiB object store: : 0.00 row [00:01, ? row/s]
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 1; Actors: 0; Queued blocks: 0 (0.0B); Resources: 1.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 1; Actors: 0; Queued blocks: 0 (0.0B); Resources: 1.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store; [all objects local]:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store; [all objects local]:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A[A                                                                                                                                                          
+                                                                                                                                                           [A
+
+                                                                                                                                                                    [A[A
+
+
+                                                                                                                                                                                           [A[A[A[36m(SplitCoordinator pid=13742)[0m ✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_0 execution finished in 1.40 seconds
+[2m[36m(pid=13742) [0mRunning Dataset: train_034RdPj1HzGUGrH1nJfifA_0. Active & requested resources: 1/14 CPU, 0.0B/1.0GiB object store: : 0.00 row [00:01, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 1; Actors: 0; Queued blocks: 0 (0.0B); Resources: 1.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store; [all objects local]:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A[A[2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_0 execution finished in 1.40 seconds: : 0.00 row [00:01, ? row/s]                                    [2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_0 execution finished in 1.40 seconds:   0%|          | 0.00/128k [00:01<?, ? row/s][2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_0 execution finished in 1.40 seconds: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s][2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_0 execution finished in 1.40 seconds: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s]                                                                                                                                                
+                                                                                                                                                           [A
+
+                                                                                                                                                                    [A[A
+
+
+                                                                                                                                                                                           [A[A[A[2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_0 execution finished in 1.40 seconds: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s]
+
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 1; Actors: 0; Queued blocks: 0 (0.0B); Resources: 1.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store; [all objects local]:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A[A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:01<00:00, 1.36s/ row][A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:01<00:00, 1.36s/ row][A
+                                                                                                                                                                  [A
+
+                                                                                                                                                                    [A[A
+
+
+                                                                                                                                                                                           [A[A[A[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:01<00:00, 1.36s/ row]
+
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store; [all objects local]:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store:   0%|          | 0.00/128k [00:01<?, ? row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s][A[A
+
+                                                                                                                                                                               [A[A
+
+
+                                                                                                                                                                                           [A[A[A[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s]
+
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store; [all objects local]:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]:   0%|          | 0.00/1.00 [00:01<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]:   0%|          | 0.00/128k [00:01<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s][A[A[A
+
+
+                                                                                                                                                                                                      [A[A[A[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:01<00:00, 93.8k row/s]
+[36m(RayTrainWorker pid=13716)[0m [rank 0/2] {'epoch': 0, 'rank': 0, 'rows_seen': 63750, 'first_loss': 0.5888388752937317, 'mean_loss': 0.2341988853663206, 'epoch_s': 2.86}
+[36m(RayTrainWorker pid=13716)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/Users/sunnydave/ray_results_day4/debug_nw2/checkpoint_2026-09-19_10-11-58.633798)
+[36m(RayTrainWorker pid=13716)[0m Reporting training result 1: TrainingReport(checkpoint=Checkpoint(filesystem=local, path=/Users/sunnydave/ray_results_day4/debug_nw2/checkpoint_2026-09-19_10-11-58.633798), metrics={'epoch': 0, 'rank': 0, 'rows_seen': 63750, 'first_loss': 0.5888388752937317, 'mean_loss': 0.2341988853663206, 'epoch_s': 2.86}, validation=False) from rank 0
+[36m(RayTrainWorker pid=13717)[0m Reporting training result 1: TrainingReport(checkpoint=None, metrics={'epoch': 0, 'rank': 1, 'rows_seen': 63750, 'first_loss': 0.7020010352134705, 'mean_loss': 0.23210804136097432, 'epoch_s': 2.85}, validation=False) from rank 1
+[36m(SplitCoordinator pid=13742)[0m Starting execution of Dataset train_034RdPj1HzGUGrH1nJfifA_1. Full logs are in /tmp/ray/session_2026-09-19_10-11-46_396432_13623/logs/ray-data
+[36m(SplitCoordinator pid=13742)[0m Execution plan of Dataset train_034RdPj1HzGUGrH1nJfifA_1: InputDataBuffer[Input] -> TaskPoolMapOperator[ListFiles] -> TaskPoolMapOperator[ReadFilesParquetV2] -> OutputSplitter[split(2, equal=True)]
+[36m(RayTrainWorker pid=13717)[0m [rank 1/2] {'epoch': 0, 'rank': 1, 'rows_seen': 63750, 'first_loss': 0.7020010352134705, 'mean_loss': 0.23210804136097432, 'epoch_s': 2.85}
+[2m[36m(pid=13742) [0mRunning Dataset train_034RdPj1HzGUGrH1nJfifA_1.: 0.00 row [00:00, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A                                                                                      
+                                                                      [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[36m(SplitCoordinator pid=13742)[0m ✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_1 execution finished in 0.05 seconds
+[2m[36m(pid=13742) [0mRunning Dataset train_034RdPj1HzGUGrH1nJfifA_1.: 0.00 row [00:00, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A[2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_1 execution finished in 0.05 seconds: : 0.00 row [00:00, ? row/s][2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_1 execution finished in 0.05 seconds:   0%|          | 0.00/63.8k [00:00<?, ? row/s][2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_1 execution finished in 0.05 seconds: 100%|██████████| 63.8k/63.8k [00:00<00:00, 588k row/s][2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_1 execution finished in 0.05 seconds: 100%|██████████| 63.8k/63.8k [00:00<00:00, 588k row/s]                                                                                                                                                 
+                                                                      [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_1 execution finished in 0.05 seconds: 100%|██████████| 63.8k/63.8k [00:00<00:00, 587k row/s]
+
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:00<00:00, 9.23 row/s][A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:00<00:00, 9.23 row/s][A
+                                                                                                                                                                  [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:00<00:00, 9.22 row/s]
+
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store:   0%|          | 0.00/128k [00:00<?, ? row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:00<00:00, 1.18M row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:00<00:00, 1.18M row/s][A[A
+
+                                                                                                                                                                               [A[A
+
+
+                                                                                 [A[A[A[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:00<00:00, 1.18M row/s]
+
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]:   0%|          | 0.00/128k [00:00<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:00<00:00, 1.18M row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:00<00:00, 1.18M row/s][A[A[A
+
+
+                                                                                                                                                                                                      [A[A[A[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:00<00:00, 1.18M row/s]
+[36m(RayTrainWorker pid=13716)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/Users/sunnydave/ray_results_day4/debug_nw2/checkpoint_2026-09-19_10-11-58.935426)
+[36m(RayTrainWorker pid=13716)[0m Reporting training result 2: TrainingReport(checkpoint=Checkpoint(filesystem=local, path=/Users/sunnydave/ray_results_day4/debug_nw2/checkpoint_2026-09-19_10-11-58.935426), metrics={'epoch': 1, 'rank': 0, 'rows_seen': 63750, 'first_loss': 0.11735914647579193, 'mean_loss': 0.056535251662135126, 'epoch_s': 0.3}, validation=False) from rank 0
+[36m(RayTrainWorker pid=13717)[0m Reporting training result 2: TrainingReport(checkpoint=None, metrics={'epoch': 1, 'rank': 1, 'rows_seen': 63750, 'first_loss': 0.14805659651756287, 'mean_loss': 0.056389351487159727, 'epoch_s': 0.3}, validation=False) from rank 1
+[36m(SplitCoordinator pid=13742)[0m Starting execution of Dataset train_034RdPj1HzGUGrH1nJfifA_2. Full logs are in /tmp/ray/session_2026-09-19_10-11-46_396432_13623/logs/ray-data
+[36m(SplitCoordinator pid=13742)[0m Execution plan of Dataset train_034RdPj1HzGUGrH1nJfifA_2: InputDataBuffer[Input] -> TaskPoolMapOperator[ListFiles] -> TaskPoolMapOperator[ReadFilesParquetV2] -> OutputSplitter[split(2, equal=True)]
+[2m[36m(pid=13742) [0mRunning Dataset train_034RdPj1HzGUGrH1nJfifA_2.: 0.00 row [00:00, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A                                                                                      
+                                                                      [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[2m[36m(pid=13742) [0mRunning Dataset train_034RdPj1HzGUGrH1nJfifA_2.: 0.00 row [00:00, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A                                                                                      
+                                                                      [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[36m(SplitCoordinator pid=13742)[0m ✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_2 execution finished in 0.05 seconds
+[2m[36m(pid=13742) [0mRunning Dataset train_034RdPj1HzGUGrH1nJfifA_2.: 0.00 row [00:00, ? row/s]
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A[2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_2 execution finished in 0.05 seconds: : 0.00 row [00:00, ? row/s][2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_2 execution finished in 0.05 seconds:   0%|          | 0.00/63.8k [00:00<?, ? row/s][2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_2 execution finished in 0.05 seconds: 100%|██████████| 63.8k/63.8k [00:00<00:00, 605k row/s][2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_2 execution finished in 0.05 seconds: 100%|██████████| 63.8k/63.8k [00:00<00:00, 605k row/s]                                                                                                                                                 
+                                                                      [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[2m[36m(pid=13742) [0m✔️  Dataset train_034RdPj1HzGUGrH1nJfifA_2 execution finished in 0.05 seconds: 100%|██████████| 63.8k/63.8k [00:00<00:00, 604k row/s]
+
+[2m[36m(pid=13742) [0m- ListFiles:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:00<00:00, 9.47 row/s][A
+[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:00<00:00, 9.47 row/s][A
+                                                                                                                                                                  [A
+
+                                                                               [A[A
+
+
+                                                                                 [A[A[A[2m[36m(pid=13742) [0m- ListFiles: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 0.0B object store: 100%|██████████| 1.00/1.00 [00:00<00:00, 9.46 row/s]
+
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store:   0%|          | 0.00/128k [00:00<?, ? row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:00<00:00, 1.21M row/s][A[A
+
+[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:00<00:00, 1.21M row/s][A[A
+
+                                                                                                                                                                               [A[A
+
+
+                                                                                 [A[A[A[2m[36m(pid=13742) [0m- ReadFilesParquetV2: Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store: 100%|██████████| 128k/128k [00:00<00:00, 1.20M row/s]
+
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True):   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]:   0%|          | 0.00/1.00 [00:00<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]:   0%|          | 0.00/128k [00:00<?, ? row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:00<00:00, 1.20M row/s][A[A[A
+
+
+[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:00<00:00, 1.20M row/s][A[A[A
+
+
+                                                                                                                                                                                                      [A[A[A[2m[36m(pid=13742) [0m- split(2, equal=True): Tasks: 0; Actors: 0; Queued blocks: 0 (0.0B); Resources: 0.0 CPU, 27.0MiB object store; [all objects local]: 100%|██████████| 128k/128k [00:00<00:00, 1.20M row/s]
+[36m(RayTrainWorker pid=13716)[0m Checkpoint successfully created at: Checkpoint(filesystem=local, path=/Users/sunnydave/ray_results_day4/debug_nw2/checkpoint_2026-09-19_10-11-59.356276)
+[36m(RayTrainWorker pid=13716)[0m Reporting training result 3: TrainingReport(checkpoint=Checkpoint(filesystem=local, path=/Users/sunnydave/ray_results_day4/debug_nw2/checkpoint_2026-09-19_10-11-59.356276), metrics={'epoch': 2, 'rank': 0, 'rows_seen': 63750, 'first_loss': 0.04494447633624077, 'mean_loss': 0.031214608561247588, 'epoch_s': 0.3}, validation=False) from rank 0
+[36m(RayTrainWorker pid=13717)[0m Reporting training result 3: TrainingReport(checkpoint=None, metrics={'epoch': 2, 'rank': 1, 'rows_seen': 63750, 'first_loss': 0.06860337406396866, 'mean_loss': 0.03145246960967779, 'epoch_s': 0.3}, validation=False) from rank 1
+[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[36m(RayTrainWorker pid=13716)[0m [rank 0] --kill-at-epoch 2: simulating a crash AFTER this epoch's checkpoint was reported. Rerun the same command to resume.
+[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[36m(TrainController pid=13702)[0m [FailurePolicy] RAISE
+[36m(TrainController pid=13702)[0m   Source: worker group
+[36m(TrainController pid=13702)[0m   Error count: 1 (max allowed: 0)
+[36m(TrainController pid=13702)[0m Error: Training failed due to worker errors:
+[36m(TrainController pid=13702)[0m [Rank 0 Error Snippet]:
+[36m(TrainController pid=13702)[0m A worker health check failed.
+[36m(TrainController pid=13702)[0m Worker info: Worker(
+[36m(TrainController pid=13702)[0m   actor=Actor(RayTrainWorker, 31f5d8d6e1acc89c8ce8652b01000000),
+[36m(TrainController pid=13702)[0m   metadata=ActorMetadata(
+[36m(TrainController pid=13702)[0m     hostname='Sunnys-Mac-Studio.local',
+[36m(TrainController pid=13702)[0m     node_id='84b40cc1c26e468209bb7c1011c581f8f091c288736dde579a018924',
+[36m(TrainController pid=13702)[0m     node_ip='127.0.0.1',
+[36m(TrainController pid=13702)[0m     pid=13716,
+[36m(TrainController pid=13702)[0m   ),
+[36m(TrainController pid=13702)[0m   distributed_context=DistributedContext(world_rank=0, world_size=2, local_rank=0, local_world_size=2, node_rank=0),
+[36m(TrainController pid=13702)[0m   log_file_path='/tmp/ray/session_2026-09-19_10-11-46_396432_13623/logs/train/ray-train-app-worker-53a5b45e80953dea41aec3bcded37cb7bc486a8a66610ca79a4dd702.log',
+[36m(TrainController pid=13702)[0m )
+[36m(TrainController pid=13702)[0m The actor died unexpectedly before finishing this task.
+[36m(TrainController pid=13702)[0m 	class_name: RayTrainWorker
+[36m(TrainController pid=13702)[0m 	actor_id: 31f5d8d6e1acc89c8ce8652b01000000
+[36m(TrainController pid=13702)[0m 	pid: 13716
+[36m(TrainController pid=13702)[0m 	namespace: afb2a7e7-4038-447b-a967-8e06008b4730
+[36m(TrainController pid=13702)[0m 	ip: 127.0.0.1
+[36m(TrainController pid=13702)[0m The actor is dead because its worker process has died. Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits with a connection error code 2. End of file. Some common causes include: (1) the process was killed by the OOM killer due to high memory usage, (2) ray stop --force was called, or (3) the worker crashed unexpectedly due to SIGSEGV or another unexpected error. If the process was killed by the kernel OOM killer (verifiable by checking for OOM in dmesg of the OOMing node), consider enabling resource isolation via --enable-resource-isolation to prevent node deaths by resource contention and significant loss of progress by uninformed kernel OOM killing.
+[36m(TrainController pid=13702)[0m ray.train.WorkerGroupError: Training failed due to worker errors:
+[36m(TrainController pid=13702)[0m [Rank 0 Error Snippet]:
+[36m(TrainController pid=13702)[0m A worker health check failed.
+[36m(TrainController pid=13702)[0m Worker info: Worker(
+[36m(TrainController pid=13702)[0m   actor=Actor(RayTrainWorker, 31f5d8d6e1acc89c8ce8652b01000000),
+[36m(TrainController pid=13702)[0m   metadata=ActorMetadata(
+[36m(TrainController pid=13702)[0m     hostname='Sunnys-Mac-Studio.local',
+[36m(TrainController pid=13702)[0m     node_id='84b40cc1c26e468209bb7c1011c581f8f091c288736dde579a018924',
+[36m(TrainController pid=13702)[0m     node_ip='127.0.0.1',
+[36m(TrainController pid=13702)[0m     pid=13716,
+[36m(TrainController pid=13702)[0m   ),
+[36m(TrainController pid=13702)[0m   distributed_context=DistributedContext(world_rank=0, world_size=2, local_rank=0, local_world_size=2, node_rank=0),
+[36m(TrainController pid=13702)[0m   log_file_path='/tmp/ray/session_2026-09-19_10-11-46_396432_13623/logs/train/ray-train-app-worker-53a5b45e80953dea41aec3bcded37cb7bc486a8a66610ca79a4dd702.log',
+[36m(TrainController pid=13702)[0m )
+[36m(TrainController pid=13702)[0m The actor died unexpectedly before finishing this task.
+[36m(TrainController pid=13702)[0m 	class_name: RayTrainWorker
+[36m(TrainController pid=13702)[0m 	actor_id: 31f5d8d6e1acc89c8ce8652b01000000
+[36m(TrainController pid=13702)[0m 	pid: 13716
+[36m(TrainController pid=13702)[0m 	namespace: afb2a7e7-4038-447b-a967-8e06008b4730
+[36m(TrainController pid=13702)[0m 	ip: 127.0.0.1
+[36m(TrainController pid=13702)[0m The actor is dead because its worker process has died. Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits with a connection error code 2. End of file. Some common causes include: (1) the process was killed by the OOM killer due to high memory usage, (2) ray stop --force was called, or (3) the worker crashed unexpectedly due to SIGSEGV or another unexpected error. If the process was killed by the kernel OOM killer (verifiable by checking for OOM in dmesg of the OOMing node), consider enabling resource isolation via --enable-resource-isolation to prevent node deaths by resource contention and significant loss of progress by uninformed kernel OOM killing.
+[36m(TrainController pid=13702)[0m Graceful shutdown of backend failed. This is expected if one of the workers has crashed.
+[36m(TrainController pid=13702)[0m Traceback (most recent call last):
+[36m(TrainController pid=13702)[0m   File "/Users/sunnydave/envs/robotics-policy-lab/lib/python3.12/site-packages/ray/train/v2/_internal/callbacks/backend_setup.py", line 27, in before_execution_group_shutdown
+[36m(TrainController pid=13702)[0m     self._backend.on_shutdown(execution_group, self._backend_config)
+[36m(TrainController pid=13702)[0m   File "/Users/sunnydave/envs/robotics-policy-lab/lib/python3.12/site-packages/ray/train/torch/config.py", line 280, in on_shutdown
+[36m(TrainController pid=13702)[0m     ray.get(futures, timeout=timeout_s)
+[36m(TrainController pid=13702)[0m   File "/Users/sunnydave/envs/robotics-policy-lab/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+[36m(TrainController pid=13702)[0m     return fn(*args, **kwargs)
+[36m(TrainController pid=13702)[0m            ^^^^^^^^^^^^^^^^^^^
+[36m(TrainController pid=13702)[0m   File "/Users/sunnydave/envs/robotics-policy-lab/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 134, in wrapper
+[36m(TrainController pid=13702)[0m     return func(*args, **kwargs)
+[36m(TrainController pid=13702)[0m            ^^^^^^^^^^^^^^^^^^^^^
+[36m(TrainController pid=13702)[0m   File "/Users/sunnydave/envs/robotics-policy-lab/lib/python3.12/site-packages/ray/_private/worker.py", line 2986, in get
+[36m(TrainController pid=13702)[0m     values, debugger_breakpoint = worker.get_objects(
+[36m(TrainController pid=13702)[0m                                   ^^^^^^^^^^^^^^^^^^^
+[36m(TrainController pid=13702)[0m   File "/Users/sunnydave/envs/robotics-policy-lab/lib/python3.12/site-packages/ray/_private/worker.py", line 1052, in get_objects
+[36m(TrainController pid=13702)[0m     raise value
+[36m(TrainController pid=13702)[0m ray.exceptions.ActorDiedError: The actor died unexpectedly before finishing this task.
+[36m(TrainController pid=13702)[0m 	class_name: RayTrainWorker
+[36m(TrainController pid=13702)[0m 	actor_id: 31f5d8d6e1acc89c8ce8652b01000000
+[36m(TrainController pid=13702)[0m 	pid: 13716
+[36m(TrainController pid=13702)[0m 	namespace: afb2a7e7-4038-447b-a967-8e06008b4730
+[36m(TrainController pid=13702)[0m 	ip: 127.0.0.1
+[36m(TrainController pid=13702)[0m The actor is dead because its worker process has died. Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits with a connection error code 2. End of file. Some common causes include: (1) the process was killed by the OOM killer due to high memory usage, (2) ray stop --force was called, or (3) the worker crashed unexpectedly due to SIGSEGV or another unexpected error. If the process was killed by the kernel OOM killer (verifiable by checking for OOM in dmesg of the OOMing node), consider enabling resource isolation via --enable-resource-isolation to prevent node deaths by resource contention and significant loss of progress by uninformed kernel OOM killing.
+training failed: WorkerGroupError: Training failed due to worker errors:
+[Rank 0 Error Snippet]:
+A worker health check failed.
+Worker info: Worker(
+  actor=Actor(RayTrainWorker, 31f5d8d6e1acc89c8ce8652b01000000),
+  metadata=ActorMetadata(
+    hostname='Sunnys-Mac-Studio.local',
+    node_id='84b40cc1c26e468209bb7c1011c581f8f091c288736dde579a018924',
+    node_ip='127.0.0.1',
+    pid=13716,
+  ),
+  distributed_context=DistributedContext(world_rank=0, world_size=2, local_rank=0, local_world_size=2, node_rank=0),
+  log_file_path='/tmp/ray/session_2026-09-19_10-11-46_396432_13623/logs/train/ray-train-app-worker-53a5b45e80953dea41aec3bcded37cb7bc486a8a66610ca79a4dd702.log',
+)
+The actor died unexpectedly before finishing this task.
+	class_name: RayTrainWorker
+	actor_id: 31f5d8d6e1acc89c8ce8652b01000000
+	pid: 13716
+	namespace: afb2a7e7-4038-447b-a967-8e06008b4730
+	ip: 127.0.0.1
+The actor is dead because its worker process has died. Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits with a connection error code 2. End of file. Some common causes include: (1) the process was killed by the OOM killer due to high memory usage, (2) ray stop --force was called, or (3) the worker crashed unexpectedly due to SIGSEGV or another unexpected error. If the process was killed by the kernel OOM killer (verifiable by checking for OOM in dmesg of the OOMing node), consider enabling resource isolation via --enable-resource-isolation to prevent node deaths by resource contention and significant loss of progress by uninformed kernel OOM killing.
+[33m(raylet)[0m A worker died or was killed while executing a task by an unexpected system error. To troubleshoot the problem, check the logs for the dead worker. Lease ID: 040000009439a1899cd730a574075a833838a246fa0c2e48ed42f7357653f6a2 Worker ID: 53a5b45e80953dea41aec3bcded37cb7bc486a8a66610ca79a4dd702 Node ID: 84b40cc1c26e468209bb7c1011c581f8f091c288736dde579a018924 Worker IP address: 127.0.0.1 Worker port: 58884 Worker PID: 13716 Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits with a connection error code 2. End of file. Some common causes include: (1) the process was killed by the OOM killer due to high memory usage, (2) ray stop --force was called, or (3) the worker crashed unexpectedly due to SIGSEGV or another unexpected error. If the process was killed by the kernel OOM killer (verifiable by checking for OOM in dmesg of the OOMing node), consider enabling resource isolation via --enable-resource-isolation to prevent node deaths by resource contention and significant loss of progress by uninformed kernel OOM killing.
+[36m(RayTrainWorker pid=13716)[0m [rank 0] --kill-at-epoch 2: simulating a crash AFTER this epoch's checkpoint was reported. Rerun the same command to resume.
+[36m(PlacementGroupCleaner pid=13714)[0m Failed to query Ray Train Controller actor state. State API may be temporarily unavailable. Continuing to monitor.
+[36m(RayTrainWorker pid=13717)[0m [rank 1/2] {'epoch': 2, 'rank': 1, 'rows_seen': 63750, 'first_loss': 0.06860337406396866, 'mean_loss': 0.03145246960967779, 'epoch_s': 0.3}[32m [repeated 5x across cluster][0m
+[36m(RayTrainWorker pid=13716)[0m [rank 0/2] {'epoch': 2, 'rank': 0, 'rows_seen': 63750, 'first_loss': 0.04494447633624077, 'mean_loss': 0.031214608561247588, 'epoch_s': 0.3}[32m [repeated 5x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
