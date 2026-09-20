@@ -324,3 +324,54 @@ Patterns that showed up more than once, worth having ready as a single answer ra
 - **Never trust exact equality on timestamps.** Week 1 Day 3's sync detectors → Week 2 Day 1's float32-precision gap numbers. Always a tolerance, never `==`.
 - **Chunking/storage parameters are never semantic.** MCAP's `chunk_size` (Week 2 Day 1) and HDF5 chunk shape (Week 2 Day 5) both only affect seek performance and file layout, never message content.
 - **Verify library behavior directly — via a debug print or the real source — rather than trusting documentation.** Week 3 Day 1's tensor-shape bug and Week 3 Day 2's decord/PyAV pivot both hinged on this. Week 3 Day 3 adds a third confirmation: `iter_torch_batches()`'s behavior branches on whether you pass a `collate_fn` at all (`batch_format="pyarrow"` internally with none, `"numpy"` the moment you supply your own) — and a bare-function `collate_fn` works today while printing a real deprecation warning for tomorrow.
+### Day 4 — Spark for the Tabular Slice, and the Seam Between Two Engines
+
+**The core idea.** Not every table in a robotics data platform needs a
+GPU-adjacent engine. Fleet facts at episode grain -- counts, duration,
+sync errors, firmware -- are plain aggregates over Parquet: Spark's job,
+the same warehouse pattern with episode_index as the grain. The real
+skill is the SEAM: Ray Data produces per-FRAME signals that need pixels;
+Spark rolls them up to episode grain, joins on a key both engines emit
+identically, casts types in exactly one place (normalize_keys).
+
+**Four mundane bugs, all hit by running:** Spark won't expand `~`
+(confirmed FileNotFoundException); LeRobot's dotted keys (observation.
+state, next.done) need backticks or Spark parses a struct path (confirmed
+UNRESOLVED_COLUMN.WITH_SUGGESTION, whose "did you mean" literally echoes
+the typed name back); max(ts)-min(ts) is one frame period short (29.98
+vs 30.0) -- demonstrated intentionally in lab1_episodes.py, then
+corrected via num_frames/FPS once fps is loaded from meta/info.json; the
+partition trap (partitionBy strips the column from every file, confirmed
+via pq.read_schema).
+
+**Real numbers.** 85 episodes, reconcile mismatches: 0 (both runs). sync
+flagged: 0/85 (synthetic timestamps prove the machinery, not the
+phenomenon); max_gap_s=0.020000458, identical across every episode.
+Ray outlier flag dataset-wide: mean=2.1567 std=0.7756, 0/127500 flagged
+at 3-sigma -- sanity-checked against per-episode max_action_magnitude
+(3.5-4.0, safely below mean+3std=4.483): a genuine well-behaved-dataset
+finding. Lab 0 JVM startup: 3.69s.
+
+**A real bug found from running the pipeline twice, not from a script:**
+ray_bronze_ingest_simplified.py's write never clears its output dir --
+ray_output_day1/ silently accumulated 4 duplicate copies. Harmless this
+time only because SUM-of-zero and MAX are duplication-invariant.
+
+**A real, deeper bug found by reading Ray's actual source, after
+disproving two of my own theories with real runs:** FailureConfig's
+auto-retry works exactly as documented, but a hard os._exit() right
+after report() can deterministically lose that exact report --
+reproduced across 5 runs. Root cause, confirmed in controller.py: the
+controller retrieves reports via its OWN periodic poll, not
+synchronously when report() returns. A worker-side sleep had zero
+effect -- the gap is cross-process, no training-loop fix exists.
+
+**Interview framing:** "I don't pick an engine by familiarity -- I ask
+whether one row of output needs a decoded frame or a model pass. I also
+don't stop at 'it works': when a checkpoint-resume test kept silently
+redoing the same epoch, I disproved my own first fix empirically before
+reading Ray Train's installed source to find the real mechanism -- the
+controller polls for reports on its own schedule, so a hard kill can
+lose the most recently reported checkpoint before the controller ever
+sees it. That's the kind of fault-tolerance edge case that matters once
+training moves from a laptop to a real GPU cluster."

@@ -560,3 +560,79 @@ Day 5 section. Flag anything below that doesn't match what you remember.]
 
 ## Weeks 4–10
 (Add a new `## Week N` section as you get to it, same format as above.)
+### Day 4 — status: complete
+- Built: spark_tabular_warehouse.py --root --out [--ray-output] [--no-partition]
+  (episodes with duration_s = num_frames/fps, sync via window-function
+  dt detector ported from Week 1's sync_checker, robots dimension from
+  meta/info.json, episode_quality = Ray's per-frame outlier flags rolled
+  up to episode grain and joined in Spark; reconcile gate vs meta/episodes
+  exits 2 on mismatch; normalize_keys() casts join keys at the seam) +
+  lab0_spark_smoke.py, lab1_episodes.py, lab2_sync.py, coding_exercise_
+  episode_quality.py, debug_challenge_dtypes.py + spark_vs_ray_boundary.md.
+- Environment: PySpark 4.2.0, Java 17.0.17 (Homebrew), Python 3.12.12,
+  Spark 4.2.0, 16 cores. Lab 0 wall time: 3.69s real (JVM startup baseline).
+- Key gotchas hit, all by running: (1) Spark doesn't expand `~`, confirmed
+  FileNotFoundException; (2) glob path (data/*/*.parquet) worked cleanly;
+  (3) dotted LeRobot columns (observation.state, next.done) need backticks,
+  confirmed UNRESOLVED_COLUMN.WITH_SUGGESTION whose "did you mean" echoes
+  the same name; (4) max(ts)-min(ts) duration is off by one frame period
+  (29.98 vs 30.0, fencepost) -- the delivered scripts (coding_exercise_
+  episode_quality.py, spark_tabular_warehouse.py) use num_frames/fps
+  directly; lab1_episodes.py intentionally demos the buggy value first,
+  then corrects it via a later withColumn(..., FPS) once meta/info.json
+  is loaded -- no fix was actually needed there.
+- Real numbers: episodes=85, reconcile mismatches=0 (both mini-project
+  runs); sync flagged=0/85, max_gap_s=0.020000458 (identical across every
+  episode -- deterministic float32 rounding from identical generation
+  logic), drift_ms~-4.58e-05; ray_bronze_ingest_simplified.py real run
+  (closes Day 1 open item): mean=2.1567 std=0.7756 frames=127500
+  flagged=0(0.00%) at 3-sigma -- sanity-checked against per-episode
+  max_action_magnitude (3.5-4.0, safely below mean+3std=4.483), a real
+  well-behaved-dataset finding, not a bug; episode_quality: n_outlier_
+  frames>0 episodes=0, max outlier_frame_rate=0.0.
+- Debugging Challenge dtype table: episode_index long/int64/int64;
+  num_frames long/int64/int64; duration_s double/double/float64; robot
+  (post-partitionBy) string/string/category -- correction to my own
+  earlier guess: Ray gives plain string, not a dictionary categorical;
+  only pandas differs. action column: Spark sees array<float> identically
+  in data/ and ray_output_day1/; Ray's own read of ray_output_day1/ shows
+  ArrowTensorTypeV2(shape=(14,), dtype=float).
+- REAL BUG found by running the pipeline twice: ray_bronze_ingest_
+  simplified.py's ds.write_parquet() never clears its output dir first
+  (unlike Spark's .mode("overwrite")) -- ray_output_day1/ had silently
+  accumulated 4 duplicate full copies. Harmless this time only because
+  SUM-of-zero and MAX are both duplication-invariant.
+- Day 3 carried items, all closed:
+  - D3-2 (num_workers=2, DDP module.-prefix crash-then-unwrap()-fix):
+    CONFIRMED -- resumed cleanly at epoch 3, completed through epoch 4.
+  - D3-3 (checkpoint file count, num_workers=2, rank-0-only): CONFIRMED
+    -- 1 checkpoint dir/epoch, exactly one state.pt each, rank 1 always
+    reports checkpoint=None.
+  - D3-1 (FailureConfig(max_failures=2) auto-retry): the RETRY/RETRY/RAISE
+    mechanism CONFIRMED correct (error count 1/2, 2/2, 3/2 exactly matches
+    documented semantics) -- but found a real, deterministic bug across 5
+    separate runs (run_b through run_f): a hard os._exit(1) right after
+    ray.train.report() can lose that exact report. Root-caused by reading
+    Ray 2.58.0's actual installed source (checkpoint_manager.py,
+    report_handler.py, controller.py:436): the controller retrieves
+    reports via its own async poll_status(timeout=health_check_interval_s)
+    cycle, not synchronously when report() returns. A worker-side
+    time.sleep(1.0) had zero effect (tested empirically, then reverted)
+    -- the gap is cross-process, no training-loop-level fix exists.
+    Conclusion: FailureConfig's retry budget can be silently consumed
+    re-executing an already-completed, already-checkpointed epoch.
+- Commit: 9451cdc (week1-3 initial commit -- repo had NO git history
+  before this session) + 0f58f1b (spark_vs_ray_boundary.md). Pushed to
+  https://github.com/sunnydave234/robotics_data_bootcamp.
+- Open questions carried to Day 5:
+  - Stretch Goal (mini_project_ray_vs_spark_timing.py, N=1/4/16 scaling)
+    never run -- optional/bonus, not blocking.
+  - Two separate GitHub repos now exist for portfolio work (this
+    session's robotics_data_bootcamp, and an older, more developed
+    robotics-ml-portfolio with real month-01/month-02 history) -- need
+    to decide which is "the" portfolio repo.
+  - Repo hygiene: robotics-ml-portfolio and lerobot/lerobot were
+    committed as broken/dangling gitlinks, need `git rm --cached` +
+    .gitignore; .DS_Store tracked; no README on the pushed repo yet.
+  - firmware/calibration facts don't exist in LeRobot metadata -- where
+    in the capture layer (Week 2 MCAP/rosbag2) they'd have to be recorded.
